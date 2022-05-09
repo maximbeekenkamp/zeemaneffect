@@ -1,0 +1,13 @@
+7.500 um, 0 rings
+7.502 um, 20 rings 
+7.504 um, 40 rings 
+7.506 um, 60 rings 
+7.509 um, 80 rings 
+7.511 um, 100 rings 
+7.513 um, 120 rings
+7.515 um, 140 rings
+7.516 um, 160 rings
+7.518 um, 180 rings
+7.519 um, 200 rings
+
+
