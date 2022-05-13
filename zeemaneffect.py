@@ -1,14 +1,10 @@
+from cmath import pi
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from scipy.optimize import curve_fit
 from scipy.signal import find_peaks
 from scipy.stats import linregress
-from scipy.optimize import curve_fit
-from cProfile import label
-from cmath import pi, sqrt
-from operator import le
-from turtle import color
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy
 
 """
 Baseline wavelength of green light in mecury vapour used throughout the document
