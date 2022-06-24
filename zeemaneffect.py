@@ -9,29 +9,47 @@ from scipy.stats import linregress
 """
 Baseline wavelength of green light in mecury vapour used throughout the document
 """
-wavl = 546.1 * 10**(-9)
+wavl = 546.1 * 10 ** (-9)
 
 """
 Import csv files
 """
 ringdata = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/zeeman_ring_data.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/zeeman_ring_data.csv",
+    sep=",",
+)
 angledata = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/zeeman_angle_data.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/zeeman_angle_data.csv",
+    sep=",",
+)
 HPFP_1 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HorizontalPFP_Splitting.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HorizontalPFP_Splitting.csv",
+    sep=",",
+)
 HPFP_2 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HPFP_effect2.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HPFP_effect2.csv",
+    sep=",",
+)
 HPFP_3 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HPFP_effect3.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HPFP_effect3.csv",
+    sep=",",
+)
 HPFP_4 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HPFP_effect4.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HPFP_effect4.csv",
+    sep=",",
+)
 HPFP_5 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HPFP_effect5.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HPFP_effect5.csv",
+    sep=",",
+)
 HPFP_6 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HPFP_effect6.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HPFP_effect6.csv",
+    sep=",",
+)
 HPFP_7 = pd.read_csv(
-    "/Users/maximbeekenkamp/Desktop/Physics/PHYS 560/Zeeman Effect/HorizontalProfilePlot.csv", sep=",")
+    "/Users/maximbeekenkamp/Desktop/Physics/PHYS_560/PHYS_Coding/zeemaneffect/HorizontalProfilePlot.csv",
+    sep=",",
+)
 
 """
 Make lists for both pixel and intesity data containing all the different plots 
@@ -99,9 +117,10 @@ ax0.set_ylabel("Ring Count")
 # Increment vs Ring Count Plot
 ax0.plot(ring_increment, ring_count, label="Rings")
 
+
 def linear_fit(x: list[float], A: float, B: float) -> list[float]:
     """
-    Linear fit creates a straight line 
+    Linear fit creates a straight line
     output looks like:
     list[float]
 
@@ -110,7 +129,7 @@ def linear_fit(x: list[float], A: float, B: float) -> list[float]:
     :param B: a float which will be the y intercept.
     :return: a list y for input x where y is defined by Ax + B.
     """
-    return [A*x1 + B for x1 in x]
+    return [A * x1 + B for x1 in x]
 
 
 """
@@ -129,24 +148,28 @@ lineregress does in theory the same thing as curve_fit but is less finiky and
 seems more accurate at times.
 """
 linfit = linregress(ring_increment, ring_count)
-# print(linfit)
+print(linfit)
 
 # Fit plot superimposed on the count increment plot
-ax0.plot(ring_increment, linear_fit(ring_increment, popt[0], popt[1]),
-         label="Fit", color="red")
+ax0.plot(
+    ring_increment,
+    linear_fit(ring_increment, popt[0], popt[1]),
+    label="Fit",
+    color="red",
+)
 
-ax0.legend(bbox_to_anchor=(1.0, 1.0), loc='upper right')
+ax0.legend(bbox_to_anchor=(1.0, 1.0), loc="upper right")
 
 """
 Here we're using the measured data to measure the wavelength. We're using 
 the small angle approximation n=2d/wavl. 
 """
 
-measured_wavl = (linfit[0] ** (-1))/2
-# print(measured_wavl)
+measured_wavl = (linfit[0] ** (-1)) / 2
+print(measured_wavl)
 
-wavl_error = ((abs(wavl - measured_wavl))/abs(wavl))*100
-# print(wavl_error)
+wavl_error = ((abs(wavl - measured_wavl)) / abs(wavl)) * 100
+print(wavl_error)
 
 """
 This section analyses the ring counting portion of our experiment (day 2 of lab)
@@ -155,20 +178,20 @@ which is the angle from the normal of the light as it enters our Fabry Perot
 interferometer.
 """
 
-cam_extent_fov = (8 + (53/60)) * (pi/180)
+cam_extent_fov = (8 + (53 / 60)) * (pi / 180)
 
 
 def difference(lst: list[float]) -> list[float]:
     """
-    Gives us the difference between neighbouring elements of a list 
+    Gives us the difference between neighbouring elements of a list
     output looks like:
     list[float]
 
     :param lst: the list of floats which act as the input data
-    :return: a list containing the absolute difference between two adjacent 
+    :return: a list containing the absolute difference between two adjacent
     elements of the list. The output list will be of length len(lst)-1
     """
-    return [abs(j-i) for i, j in zip(lst, lst[1:])]
+    return [abs(j - i) for i, j in zip(lst, lst[1:])]
 
 
 anglesleft = difference(angle_left)
@@ -177,7 +200,7 @@ anglesright = difference(angle_right)
 angles_dif_av = [0] * len(anglesleft)
 
 for i in range(len(anglesleft)):
-    angles_dif_av[i] = (abs(anglesright[i] - anglesleft[i])) * (pi/180)
+    angles_dif_av[i] = (abs(anglesright[i] - anglesleft[i])) * (pi / 180)
 
 
 def cumulative(lst: list[float]) -> list[float]:
@@ -191,14 +214,14 @@ def cumulative(lst: list[float]) -> list[float]:
     """
     cu_list = []
     length = len(lst)
-    cu_list = [sum(lst[0:x:1]) for x in range(0, length+1)]
+    cu_list = [sum(lst[0:x:1]) for x in range(0, length + 1)]
     return cu_list[1:]
 
 
 theta_y_data = [0] + cumulative(angles_dif_av)
 
 for i in range(len(theta_y_data)):
-    theta_y_data[i] = theta_y_data[i]**2
+    theta_y_data[i] = (theta_y_data[i]) ** 2
 # print(theta_y_data)
 
 p_x_data: list[float] = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0]
@@ -225,27 +248,29 @@ print(linfit1)
 popt1 = [float(x) for x in popt1]  # this avoids some weird errors with plot
 print(popt1)
 # Fit plot superimposed on the angle count plot
-ax1.plot(p_x_data[2:], linear_fit(p_x_data[2:], popt1[0], popt1[1]),
-         label="Fit", color="red")
+ax1.plot(
+    p_x_data[2:], linear_fit(p_x_data[2:], popt1[0], popt1[1]), label="Fit", color="red"
+)
 
-ax1.legend(bbox_to_anchor=(1.0, 1.0), loc='upper right')
+ax1.legend(bbox_to_anchor=(1.0, 1.0), loc="upper right")
 
 """
 This section contains all the data analysis of the magnetic field portion of the 
 lab.
 """
 
+
 def show_plot7(num: int):
     """
-    Gives us the plot of our 7th csv input file. Plot 7 is the plot which has 
-    zero magnetic field acting upon it. As such it acts as our reference plot 
+    Gives us the plot of our 7th csv input file. Plot 7 is the plot which has
+    zero magnetic field acting upon it. As such it acts as our reference plot
     and is treated seperately from our other plots. This function gives both the
     plot as well as the peaks.
     output looks like:
     <graph of plot 7 + peaks>
     list[float]
 
-    :param num: the num of the plot the function should analyse. For this 
+    :param num: the num of the plot the function should analyse. For this
     function this should only ever be 7.
     :return: a list containing the pixel location of the peaks of our plot.
     The function will also output the plot for this data set.
@@ -260,21 +285,21 @@ def show_plot7(num: int):
     ax.set_ylabel("Intensity")
 
     # Intensity vs Pixel Plot
-    ax.plot(HPFP_pixels[num-1], HPFP_intensity[num-1],
-            label="HPFP " + str(num))
+    ax.plot(HPFP_pixels[num - 1], HPFP_intensity[num - 1], label="HPFP " + str(num))
 
     """
     Initialising local graph peak plot
     """
-    peaks = find_peaks(HPFP_intensity[num-1], height=0, distance=7, width=4)
-    height = peaks[1]['peak_heights']
+    peaks = find_peaks(HPFP_intensity[num - 1], height=0, distance=7, width=4)
+    height = peaks[1]["peak_heights"]
     a = len(height)  # this prevents dimension errors for the scatter plot
-    peak_pos = HPFP_pixels[num-1][peaks[0]]
+    peak_pos = HPFP_pixels[num - 1][peaks[0]]
     # Peak plot superimposed on the intensity pixel plot
-    ax.scatter(peak_pos, height, s=a,  color="r", marker="x", label="Maxima")
+    ax.scatter(peak_pos, height, s=a, color="r", marker="x", label="Maxima")
 
-    ax.legend(bbox_to_anchor=(1.0, 1.0), loc='upper right')
+    ax.legend(bbox_to_anchor=(1.0, 1.0), loc="upper right")
     return peak_pos
+
 
 # pixel to distance conversion
 # distance between peaks is on wavelength
@@ -287,25 +312,27 @@ from plot 7 is used here as it is the most well defined.
 # f constant
 f = 67.2 * 10 ** (-3)
 
-av_pixel_spacing = sum(difference(show_plot7(7)))/(len(show_plot7(7)-1))
-conversion_r = (wavl/av_pixel_spacing)
-conversion_theta = conversion_r/f
+peak_pos_av = list(show_plot7(7))
+peak_pos_av = peak_pos_av[:6]
+av_pixel_spacing = sum(difference(peak_pos_av)) / (len(peak_pos_av) - 1)
+conversion_r = wavl / av_pixel_spacing
+conversion_theta = conversion_r / f
 
 
 def show_plot(num: int):
     """
-    Gives us the plot of our num input csv input file. All these plots have 
+    Gives us the plot of our num input csv input file. All these plots have
     various amounts of magnetic field (check lab book). As such we must relax
     our restrictions on what can be counted as a peak (see peak in show_plot7 vs
-    peak in show_plot). This means we will have more peaks than we want which 
-    we'll have to remove later by hand. This function gives both the plot as 
+    peak in show_plot). This means we will have more peaks than we want which
+    we'll have to remove later by hand. This function gives both the plot as
     well as the peaks.
     output looks like:
     <graph of plot (num) + peaks>
     list[float]
 
-    :param num: the num of the plot the function should analyse. For this 
-    function this should be our options other than 7 (function will still work 
+    :param num: the num of the plot the function should analyse. For this
+    function this should be our options other than 7 (function will still work
     with 7).
     :return: a list containing the pixel location of the peaks of our plot.
     The function will also output the plot for this data set.
@@ -320,20 +347,19 @@ def show_plot(num: int):
     ax.set_ylabel("Intensity")
 
     # Intensity vs Pixel Plot
-    ax.plot(HPFP_pixels[num-1], HPFP_intensity[num-1],
-            label="HPFP " + str(num))
+    ax.plot(HPFP_pixels[num - 1], HPFP_intensity[num - 1], label="HPFP " + str(num))
 
     """
     Initialising local graph peak plot
     """
-    peaks = find_peaks(HPFP_intensity[num-1], height=0)
-    height = peaks[1]['peak_heights']
+    peaks = find_peaks(HPFP_intensity[num - 1], height=0)
+    height = peaks[1]["peak_heights"]
     a = len(height)  # this prevents dimension errors for the scatter plot
-    peak_pos = HPFP_pixels[num-1][peaks[0]]
+    peak_pos = HPFP_pixels[num - 1][peaks[0]]
     # Peak plot superimposed on the intensity pixel plot
-    ax.scatter(peak_pos, height, s=a,  color="r", marker="x", label="Maxima")
+    ax.scatter(peak_pos, height, s=a, color="r", marker="x", label="Maxima")
 
-    ax.legend(bbox_to_anchor=(1.0, 1.0), loc='upper right')
+    ax.legend(bbox_to_anchor=(1.0, 1.0), loc="upper right")
     return list(peak_pos)
 
 
@@ -356,13 +382,13 @@ def findMiddle(lst: list[float]):
     :param lst: the list of floats which act as the input data.
     :return: a list which contains the middle pixel or a tuple containing a list
     containing the int pixel value of the two middle pixels if the input list is
-    of an odd length. 
+    of an odd length.
     """
-    middle = float(len(lst))/2
+    middle = float(len(lst)) / 2
     if middle % 2 != 0:
-        return lst[int(middle - .5)]
+        return lst[int(middle - 0.5)]
     else:
-        return (lst[int(middle)], lst[int(middle-1)])
+        return (lst[int(middle)], lst[int(middle - 1)])
 
 
 def middle(num: int) -> float:
@@ -372,13 +398,13 @@ def middle(num: int) -> float:
     float
 
     :param lst: the num of the plot which we want to find the middle pixel for.
-    :return: a float of the singular pixel value of the middle for the input 
+    :return: a float of the singular pixel value of the middle for the input
     plot. If the input list is of an odd length it is the average of the two
-    middle pixels. 
+    middle pixels.
     """
     middle_pixel = findMiddle(show_plot(num))
     if type(middle_pixel) is tuple:
-        middle_pixel = (middle_pixel[0]+middle_pixel[1])/2
+        middle_pixel = (middle_pixel[0] + middle_pixel[1]) / 2
     return middle_pixel
 
 
@@ -388,7 +414,7 @@ middle pixel
 """
 middle_list = [0] * 7
 for i in range(len(middle_list)):
-    middle_list[i] = middle(i+1)
+    middle_list[i] = middle(i + 1)
 
 """
 This section is were we manually remove peaks when our show_plot function was
@@ -405,8 +431,8 @@ no magnetic field to our max strength B-field.
 """
 # 7
 for i in range(0, len(HPFP_pixels)):
-    peak_pos_7.insert(i*3, peak_pos_7[i*3])
-    peak_pos_7.insert(i*3, peak_pos_7[i*3])
+    peak_pos_7.insert(i * 3, peak_pos_7[i * 3])
+    peak_pos_7.insert(i * 3, peak_pos_7[i * 3])
 peak_pos_7 = peak_pos_7[:18]  # ignore the right hand side of middle
 trim_lst = trim_lst + [peak_pos_7]
 
@@ -511,10 +537,10 @@ def av_wavel_shift(trim_lst: list, num: int):
     plot locations (in pixels) for that plot.
     :param num: the num of the plot we're looking at.
     :return: a tuple of the av wavelength shift left and right for this specific
-    plot in metres. 
+    plot in metres.
     """
     # turns our pixel data into the number of pixels from the centre
-    trim_lst = list(map(lambda x: abs(x - middle_list[num-1]), trim_lst))
+    trim_lst = list(map(lambda x: abs(x - middle_list[num - 1]), trim_lst))
     # turns our pixels into metres
     trim_lst = list(map(lambda x: x * conversion_r, trim_lst))
 
@@ -525,12 +551,12 @@ def av_wavel_shift(trim_lst: list, num: int):
 
     for i in range(0, len(trim_lst), 3):
         # (+ve) => increase in wavelength => decrease in energy
-        wavel_shift_L_temp = wavel_shift_L_temp + [trim_lst[i]-trim_lst[i+1]]
+        wavel_shift_L_temp = wavel_shift_L_temp + [trim_lst[i] - trim_lst[i + 1]]
         # (-ve) => decrease in wavelength => increase in energy
-        wavel_shift_R_temp = wavel_shift_R_temp + [trim_lst[i+2]-trim_lst[i+1]]
+        wavel_shift_R_temp = wavel_shift_R_temp + [trim_lst[i + 2] - trim_lst[i + 1]]
 
-    av_wavel_shift_L_temp = sum(wavel_shift_L_temp)/len(wavel_shift_L_temp)
-    av_wavel_shift_R_temp = sum(wavel_shift_R_temp)/len(wavel_shift_R_temp)
+    av_wavel_shift_L_temp = sum(wavel_shift_L_temp) / len(wavel_shift_L_temp)
+    av_wavel_shift_R_temp = sum(wavel_shift_R_temp) / len(wavel_shift_R_temp)
 
     return av_wavel_shift_L_temp, av_wavel_shift_R_temp
 
@@ -543,8 +569,8 @@ av_wavel_shift_R = []
 This gets all the wavelength shifts (L and R) for all the plots.
 """
 for i in range(len(HPFP_pixels)):
-    av_wavel_shift_L = av_wavel_shift_L + [av_wavel_shift(trim_lst[i], i+1)[0]]
-    av_wavel_shift_R = av_wavel_shift_R + [av_wavel_shift(trim_lst[i], i+1)[1]]
+    av_wavel_shift_L = av_wavel_shift_L + [av_wavel_shift(trim_lst[i], i + 1)[0]]
+    av_wavel_shift_R = av_wavel_shift_R + [av_wavel_shift(trim_lst[i], i + 1)[1]]
 
 # from lab book
 x_current = [0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.2]
@@ -559,10 +585,16 @@ ax2.set_xlabel("Relative Strength of B-Field")
 ax2.set_ylabel(r"Change in $\lambda$ $(m)$")
 
 # Wavelength Shift vs B-Field Plot
-ax2.plot(x_current, av_wavel_shift_L, label=r"$\pi = -\frac{1}{2}$" "\n"
-         r"$E_\downarrow = -\frac{1}{2} m_\ell \mu_B B$")
-ax2.plot(x_current, av_wavel_shift_R, label=r"$\pi = +\frac{1}{2}$" "\n"
-         r"$E_\uparrow = +\frac{1}{2} m_\ell \mu_B B$")
+ax2.plot(
+    x_current,
+    av_wavel_shift_L,
+    label=r"$\pi = -\frac{1}{2}$" "\n" r"$E_\downarrow = -\frac{1}{2} \mu_B B$",
+)
+ax2.plot(
+    x_current,
+    av_wavel_shift_R,
+    label=r"$\pi = +\frac{1}{2}$" "\n" r"$E_\uparrow = +\frac{1}{2} \mu_B B$",
+)
 
 """
 Initialising graph plot 2 fits (L and R)
@@ -580,10 +612,25 @@ popt2_L = [float(x) for x in popt2_L]
 popt2_R = [float(x) for x in popt2_R]
 
 # Fit plots superimposed on the wavelength b-field plot
-ax2.plot(x_current, linear_fit(x_current, popt2_L[0], popt2_L[1]),
-         label="Fit", color="red")
+ax2.plot(
+    x_current, linear_fit(x_current, popt2_L[0], popt2_L[1]), label="Fit", color="red"
+)
 ax2.plot(x_current, linear_fit(x_current, popt2_R[0], popt2_R[1]), color="red")
 
-ax2.legend(loc='upper left', prop={'size': 10})
+h = 6.62607015 * 10 ** (-34)
+c = 299792458
+
+print("L")
+print(popt2_L)
+print((h * c) / popt2_L[0])
+print("R")
+print(popt2_R)
+print((h * c) / popt2_L[0])
+print("Theoretical values")
+print(((9.2740154) * 10 ** (-24)) / 2)
+print((h * c) / (((9.2740154) * 10 ** (-24)) / 2))
+
+
+ax2.legend(loc="upper left", prop={"size": 10})
 
 plt.show()
