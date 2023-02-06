@@ -15,10 +15,12 @@ such spectral lines, and it’s splitting, is shown in Fig.1 & 2
 respectively.
 
 <img src="Images/Spectral%20Lines%20Lab%20Manual.png" height="300">
-Example of spectral lines
+
+**Example of spectral lines** <br> <br>
 
 <img src="Images/Spectral%20Lines%20Lab%20Manual%20with%20split.png" height="300">
-Example of spectral lines under the presence of a magnetic field
+
+**Example of spectral lines under the presence of a magnetic field** <br> <br>
 
 A current passing through a mercury discharge tube ionises electrons in
 the mercury causing photon emission. This leaves a space for an electron
@@ -29,7 +31,8 @@ can be seen in Fig.3. These emitted photons are the spectral lines shown
 in Fig.1.
 
 <img src="Images/energylevelsemission.jpg" height="300">
-Example of quantised atomic energy levels
+
+**Example of quantised atomic energy levels** <br> <br>
 
 Under a magnetic field these emitted photons split. The Planck-Einstein
 relation (1) is a fundamental equation stating that photon energy is
@@ -96,7 +99,8 @@ governing the energy shifts of the $\pi$ transitions is:
 $$\Delta E = 0, \; \pm \frac{1}{2} \mu_B B$$
 
 <img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+
+**Energy levels diagram for $7S \rightarrow 6P$ splitting.** <br> <br>
 
 Using a Fabry-Pérot interferometer, the change in frequency of the
 Zeeman Effect is observed (Eq.1 & 12). Light passing through the
@@ -112,12 +116,13 @@ nature of this experiment, we get Eq.14 & 15:
 
 $$n \approx \frac{2d}{\lambda}$$
 $$\theta_p^2 = (p + \epsilon) \frac{\lambda}{d}$$
-$$p = n_0 - n, \; \; \; \; \; 0 \le \epsilon \le 1$$ Where:
+$$p = n_0 - n\; 0 \le \epsilon \le 1$$ Where:
 
 ## EXPERIMENT
 
 <img src="Images/FP%20interferometer.png" height="300">
-A schematic of the Fabry-Pérot interferometer.
+
+**A schematic of the Fabry-Pérot interferometer.** <br> <br>
 
 The experiment had two parts, studying spectral lines and the Zeeman
 Effect. For both parts "VirtualDub" was used to display the spectral
@@ -137,7 +142,7 @@ micrometer.
 
 <div>
 
-Table I
+##### Table I
 
 |                                  |                    |
 | :------------------------------: | :----------------: |
@@ -169,7 +174,7 @@ screen, and rotating the camera we measured the spacing between each
 ring. Once again this method does not require any knowledge about the
 initial conditions of the Fabry-Pérot interferometer.
 
-<div id="table:TableI">
+##### Table II
 
 |                             |              |              |
 | :-------------------------: | :----------: | :----------: |
@@ -187,8 +192,6 @@ initial conditions of the Fabry-Pérot interferometer.
 
 </div>
 
-<span id="table:TableI" label="table:TableI">$$table:TableI$$</span>
-
 ### Zeeman Splitting
 
 For experiment B we are looking at the effect a B-Field has on the
@@ -198,7 +201,7 @@ approximately 30 frames were averaged and created a horizontal profile
 plot. For each B-Field we measured the average wavelength shift caused
 by the Zeeman effect.
 
-<div id="table:TableI">
+##### Table III
 
 |                  |                   |
 | :--------------: | :---------------: |
@@ -217,8 +220,6 @@ by the Zeeman effect.
 
 </div>
 
-<span id="table:TableI" label="table:TableI">$$table:TableI$$</span>
-
 ## RESULTS AND ANALYSIS
 
 ### Spectral Lines
@@ -232,12 +233,9 @@ wavelength of green light emitted from the mercury vapour was
 calculated. Graphically, as shown in Fig.6, this is the gradient of the
 linear regression.
 
-<img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+<img src="Images/change%20distance.png" height="300">
 
-![The linear relationship between $n$, the Ring Count and $d$ the
-Increment. The gradient is
-$\frac{2}{\lambda}$.](change%20distance.png)  
+**The linear relationship between $n$, the Ring Count and $d$ the Increment. The gradient is $\frac{2}{\lambda}$** <br> <br>
 
 #### Measuring Wavelength with Angle
 
@@ -246,16 +244,15 @@ between $\theta^2$ and $p$ is shown in Fig.7. The gradient of the
 linear regression is again the wavelength of the green light emitted
 from the mercury vapour.
 
-<img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+<img src="Images/countrings.png" height="300">
 
-![The linear relationship between $\theta^2$, the angle of the
+**The linear relationship between $\theta^2$, the angle of the
 incoming light and $p$ the relative ring order number. The gradient is
-$\frac{\lambda}{d}$.](countrings.png)  
+$\frac{\lambda}{d}$.** <br> <br>
 
 The resulting wavelengths and their errors are listed in Table IV.
 
-<div id="table:TableI">
+##### Table IV
 
 | <span>**Experiment**</span> | <span>**Wavelength $\lambda$, ($nm$)**</span> | <span>**Error**</span> |
 | :-------------------------: | :-----------------------------------------------: | :--------------------: |
@@ -266,8 +263,6 @@ The resulting wavelengths and their errors are listed in Table IV.
 **Results from Experiment A**
 
 </div>
-
-<span id="table:TableI" label="table:TableI">$$table:TableI$$</span>
 
 Both of the experimental values for wavelength have the correct order of
 magnitude. Given the possible errors from difficulty operating the lab
@@ -282,10 +277,9 @@ produced an averaged horizontal profile plot (HPFP) showing the
 intensity for each pixel of a line along the middle of images such as
 the ones seen in Fig.1 & 2.
 
-<img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+<img src="Images/HPFP7.png" height="300">
 
-![Zeeman Splitting at $0 \; A$.](HPFP7.png)  
+**Zeeman Splitting at $0 \; A$** <br> <br>
 
 To find the relationship described in the Zeeman effect, Eq.12., the
 peaks of the HPFPs were found using the Scipy function "find\_peaks".
@@ -293,10 +287,9 @@ This is shown in Fig.8 & 9. As the B-Field increased however, there was
 the find\_peaks function created a lot of noise, shown in Fig.9, calling
 for some data cleansing.
 
-<img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+<img src="Images/HPFP1.png" height="300">
 
-![Zeeman Splitting at $1.2 \; A$.](HPFP1.png)  
+**Zeeman Splitting at $1.2 \; A$.**<br> <br>
 
 Having found these peaks, we measured the wavelength shift (in pixels),
 left and right, from the central peak. These values were subsequently
@@ -309,15 +302,14 @@ current for Helmholtz Coils, and because we could not measure the actual
 strength of the magnet, we used the current as the independent variable
 shown in Fig.10.
 
-<img src="Images/7S%20to%206P%20splittings.png" height="300">
-Energy levels diagram for $7S \rightarrow 6P$ splitting
+<img src="Images/ZeemanSplitting.png" height="300">
 
-![The Zeeman Effect. The gradient of the slope is defined by the
-magnetic moment.](ZeemanSplitting.png)  
+The Zeeman Effect. The gradient of the slope is defined by the
+magnetic moment.
 
 The resulting energy shifts and their errors are listed in Table V.
 
-<div id="table:TableI">
+##### Table V
 
 | <span>**Experiment**</span> | <span>**Magnetic Moment ($J \cdot T^-1$ )**</span> | <span>**Error**</span> |
 | :-------------------------: | :--------------------------------------------------: | :--------------------: |
@@ -329,15 +321,13 @@ The resulting energy shifts and their errors are listed in Table V.
 
 </div>
 
-<span id="table:TableI" label="table:TableI">$$table:TableI$$</span>
-
 The observed experimental result does not accurately reproduce Zeeman’s
 findings. However, the results are internally consistent, the gradient
 of both the spin up and spin down $\pi$ readings are the same,
 indicating that there was a systematic error in our work. This is likely
 due to an incorrect pixel to metre conversion calculation.
 
-## CONCLUSIONS
+## Conclusions
 
 In this lab experiment, we were able to investigate the Zeeman effect.
 Specifically, Zeeman splitting was measured using computer software and
